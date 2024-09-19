@@ -89,9 +89,7 @@ class AccountControllerTest_WebMvc {
     }
 
     @Test
-<<<<<<< HEAD
-    void givenCostumerId_whenGetAccountByCustomerNotExist_thenCustomerNotFoundException() {
-=======
+
     void givenCostumerId_whenGetAccountByCustomerNotExist_thenCustomerNotFoundException() throws Exception {
         Mockito.when(accountService.listarCuentasCliente(100L)).thenThrow(new CustomerNotfoundException("Customer not found"));
         MvcResult result = mockMvc.perform(get("/account/customer/100")
@@ -101,7 +99,6 @@ class AccountControllerTest_WebMvc {
             //.andExpect(jsonPath("$.message").value("Customer not found"))
             .andReturn();
         System.out.println(result.getResponse());
->>>>>>> feabe1464e98d08d72bbf222c5e0e510fc450f5e
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.dxc.accountservice.configuration;
+package com.dxc.accountservice.configuration.security;
 
 import com.dxc.accountservice.persistence.entity.RoleEnum;
 import com.dxc.accountservice.persistence.entity.User;
@@ -15,11 +15,11 @@ public class UserDetailsConfig {
 
     private RoleEnum role;
     private List<User> users = List.of(
-            new User("user1","password",role.Cashier),
-            new User("user2","password",role.Director),
-            new User("user3","password",role.Director),
-            new User("user4","password",role.Cashier),
-            new User("user5","password",role.Director)
+            new User(1,"user1","password",role.Cashier),
+            new User(2,"user2","password",role.Director),
+            new User(3,"user3","password",role.Director),
+            new User(4,"user4","password",role.Cashier),
+            new User(5,"user5","password",role.Director)
     );
 
     @Bean
@@ -27,7 +27,9 @@ public class UserDetailsConfig {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return users.stream().filter(user -> user.getUsername().equals(username)).findFirst().get();
+                return users.stream()
+                        .filter(user -> user.getUsername().equals(username))
+                        .findFirst().orElseThrow(()->new UsernameNotFoundException( "User " + username + " not found"));
             }
         };
     }

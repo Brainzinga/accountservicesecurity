@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class User implements UserDetails {
+    private Integer id;
     private String username;
     private String password;
     private RoleEnum role;
