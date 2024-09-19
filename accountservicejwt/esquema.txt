@@ -1,0 +1,44 @@
+***************GET*************** getAccountByCustomer /account/customer/{customerId}
+200 
+404 Customer No encontrado
+400 Datos erróneos URL
+
+***************GET*************** obtenerCuentaporId /account//{accountId}/{customerId}
+200
+404 Customer/Account No encontrado
+400 Datos erróneos URL
+
+
+***************POST************** crearCuenta /account
+200
+400 JSON incorrecto
+404 Costumer no encontrado
+415 Content-Type no compatible Unsupported Media Type
+
+***************POST************** actualizarCuenta /account/{accountId}
+200 
+400 JSON incorrecto
+404 Costumer no encontrado
+415 Content-Type no compatible Unsupported Media Type
+
+*************DELETED************* eliminarCuentas /account/{customerId}
+200 
+404 Cuenta no encontrada
+
+*************POST**************** addMoneyToBalance /account/add-money
+200
+400 JSON incorrecto
+404 Costumer/Account no encontrado
+415 Content-Type no compatible Unsupported Media Type
+
+*************POST**************** restMoneyToBalance /account/rest-money
+200
+400 JSON incorrecto
+404 Costumer/Account no encontrado
+
+
+***************GET*************** comprobarPrestamo /account/comprobar-préstamo/{customerId}/{monto}
+200
+404 Customer/Account No encontrado
+400 Datos erróneos URL
+
