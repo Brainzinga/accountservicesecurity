@@ -1,6 +1,6 @@
 #  swagger URL = http://localhost:8080/swagger-ui/
 spring:
-  application.name: accountservice
+  application.name: accountserviceresource
   profiles.active: dev
 
 ---

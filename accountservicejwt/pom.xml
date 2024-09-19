@@ -11,7 +11,7 @@
 	<groupId>com.dxc.accountservice</groupId>
 	<artifactId>accountservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>accountservice</name>
+	<name>accountservicejwt</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
