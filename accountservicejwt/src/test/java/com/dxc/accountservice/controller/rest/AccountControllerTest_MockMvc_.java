@@ -27,13 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
-@ActiveProfiles("testing")
-@Sql(value = "classpath:data_testing.sql")
 class AccountControllerTest_MockMvc_ extends AccountControllerTestAbstract {
-
-    @Autowired
-    private MockMvc mockMvc;
-
     @Autowired
     private AccountService accountService;
 
@@ -78,13 +72,13 @@ class AccountControllerTest_MockMvc_ extends AccountControllerTestAbstract {
     @Test
     void givenAccountIdAndCostumerId_whenCostumerIdNotExist_thenCustomerNotFoundException() throws Exception{
                     MvcResult fakeaccount = mockMvc.perform(
-                        get("/account/2/9")
+                        get("/account/1/9")
                         .accept(MediaType.APPLICATION_JSON_VALUE)
                         .header("Authorization", "Bearer " + accessToken)
                     )
                     .andDo(MockMvcResultHandlers.print())
                     .andExpect(status().isNotFound())
-                    .andExpect(content().string("Customer not found with id: 9"))
+                    .andExpect(content().string("this account does not exist for customer with id: 9"))
                     .andReturn();
     }
 

@@ -29,6 +29,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @AutoConfigureMockMvc
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@ActiveProfiles("testing")
+@Sql(value = "classpath:data_testing.sql")
 public abstract class AccountControllerTestAbstract {
     @Autowired
     protected MockMvc mockMvc;
