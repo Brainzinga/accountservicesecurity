@@ -1,8 +1,11 @@
 package com.dxc.accountservice.configuration;
 
 import com.dxc.accountservice.jwt.JwtTokenFilter;
+import com.dxc.accountservice.jwt.JwtTokenUtil;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -14,8 +17,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @TestConfiguration
 public class ApplicationSecurity {
 
+    @MockBean
+    private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private JwtTokenFilter jwtTokenFilter;
+
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig)throws Exception{

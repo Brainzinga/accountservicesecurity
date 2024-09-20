@@ -7,7 +7,7 @@
     <file url="file://$PROJECT_DIR$/accountserviceresource/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oauth2-authorization-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oauth2-authorization-server/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../new/accountservice/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../new/accountservice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../Formacion/spring5/ProductsServiceJWT/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../Formacion/spring5/ProductsServiceJWT/src/main/resources" charset="UTF-8" />
   </component>
 </project>

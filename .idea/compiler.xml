@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="oauth2-authorization-server" />
+        <module name="ProductsService" />
       </profile>
-      <profile name="Annotation profile for accountservice" enabled="true">
+      <profile name="Annotation profile for accountserviceresource" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -19,17 +20,18 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
         </processorPath>
-        <module name="accountservice (3)" />
         <module name="accountservice (2)" />
         <module name="accountservice (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="accountservice" target="11" />
+      <module name="accountservice (3)" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ProductsService" options="-parameters" />
       <module name="accountservice (1)" options="-parameters" />
       <module name="accountservice (2)" options="-parameters" />
       <module name="accountservice (3)" options="-parameters" />
