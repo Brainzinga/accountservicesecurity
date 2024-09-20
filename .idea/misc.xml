@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/accountservicejwt/pom.xml" />
         <option value="$PROJECT_DIR$/accountserviceresource/pom.xml" />
         <option value="$PROJECT_DIR$/oauth2-authorization-server/pom.xml" />
+        <option value="$PROJECT_DIR$/../new/accountservice/pom.xml" />
       </list>
     </option>
   </component>
