@@ -10,10 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.web.client.RestClientException;
 
@@ -22,17 +20,20 @@ import java.time.LocalDate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("testing")
+@Sql(value = "classpath:data_testing.sql")
 class AccountControllerTestRestTemplate extends AccountControllerTestAbstract {
 
-    @LocalServerPort
-    private int port;
+//    @LocalServerPort
+//    private int port;
     @Autowired
     private TestRestTemplate restTemplate;
-    @MockBean
+    @Autowired
     private AccountService accountService;
 
     @Test
     void givenCostumerId_whenGetAccountByCustomer_thenAccountList() {
+
 
     }
     @Test
@@ -42,20 +43,27 @@ class AccountControllerTestRestTemplate extends AccountControllerTestAbstract {
 
     @Test
     void givenAccountIdAndCostumerId_whenObtenerCuentaPorId_thenOneAccount() throws Exception{
-        AccountDtoResponse mockResponse = AccountDtoResponse.builder().id(1L).customerId(1L).type("Personal").openingDate(LocalDate.now()).balance(400).build();
-        Mockito.when(accountService.getByAccountIdAndCustomerId(1L,1L)).thenReturn(mockResponse);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        headers.set(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken);
+        HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
 
-        ResponseEntity<AccountDtoResponse> response = restTemplate.getForEntity("http://localhost:" + port + "/account/1/1", AccountDtoResponse.class);
+        ResponseEntity<AccountDtoResponse> response = restTemplate.exchange(
+        "/account/1/1", HttpMethod.GET, requestEntity, AccountDtoResponse.class);
+
+        assertThat(response).isNotNull();
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
     }
 
     @Test
     void givenAccountIdAndCostumerId_whenCostumerIdNotExist_thenRestClientException() throws Exception{
-        HttpHeaders headers = new HttpHeaders();
-        headers.set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+           HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        headers.set(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken);
+        HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
         try{
-            restTemplate.getForEntity("http://localhost:" + port + "/account/1/50", AccountDtoResponse.class);
+            restTemplate.exchange("/account/1/50",HttpMethod.GET,requestEntity, AccountDtoResponse.class);
         }
         catch(RestClientException e){
             assertThat(e.getMessage()).contains("Unrecognized token 'Customer'");

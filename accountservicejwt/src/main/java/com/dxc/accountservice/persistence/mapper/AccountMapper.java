@@ -14,8 +14,8 @@ public interface AccountMapper {
 
     @Mapping(source = "customer.id", target = "customerId"  )
     AccountDtoResponse toAccountDtoResponse(Account account);
+    @Mapping(source = "customerId", target = "customer.id")
     Account toAccount(AccountDtoRequest accountDtoRequest);
-
     List<AccountDtoResponse> toAccountDtoResponseList(List<Account> accounts);
 
 }
