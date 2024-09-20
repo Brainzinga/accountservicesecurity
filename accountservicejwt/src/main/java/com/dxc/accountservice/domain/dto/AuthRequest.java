@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor @NoArgsConstructor
 @ToString
 public class AuthRequest {
-    @NotNull @Email @Length(min = 5, max = 50)
+    @NotNull 
     private String username;
 
     @NotNull @Length(min = 5, max = 10)
