@@ -22,7 +22,7 @@ import java.time.LocalDate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class AccountControllerTestRestTemplate {
+class AccountControllerTestRestTemplate extends AccountControllerTestAbstract {
 
     @LocalServerPort
     private int port;
@@ -77,4 +77,6 @@ class AccountControllerTestRestTemplate {
     @Test
     void givenAccountAndBalance_whenRestInsuficientMoneyToBalance_thenInsufficientBalanceException() {
     }
+
+
 }

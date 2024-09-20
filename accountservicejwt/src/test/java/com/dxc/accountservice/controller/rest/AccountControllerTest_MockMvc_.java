@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ActiveProfiles("testing")
 @Sql(value = "classpath:data_testing.sql")
-class AccountControllerTest_MockMvc_ {
+class AccountControllerTest_MockMvc_ extends AccountControllerTestAbstract {
 
     @Autowired
     private MockMvc mockMvc;
@@ -100,4 +100,5 @@ class AccountControllerTest_MockMvc_ {
     @Test
     void givenAccountAndBalance_whenRestInsuficientMoneyToBalance_thenInsufficientBalanceException() {
     }
+
 }

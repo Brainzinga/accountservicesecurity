@@ -26,11 +26,8 @@ public class UserDetailsConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         users = List.of(
-                new User(1, "user1", passwordEncoder.encode("password"), role.Cashier),
-                new User(2, "user2", "password", role.Director),
-                new User(3, "user3", "password", role.Director),
-                new User(4, "user4", "password", role.Cashier),
-                new User(5, "user5", "password", role.Director)
+                new User(1, "user", passwordEncoder.encode("password"), role.Cashier),
+                new User(2, "admin", passwordEncoder.encode("password"), role.Director)
         );
         return new UserDetailsService() {
             @Override

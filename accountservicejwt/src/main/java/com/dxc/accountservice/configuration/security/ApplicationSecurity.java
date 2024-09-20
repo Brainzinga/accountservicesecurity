@@ -2,11 +2,13 @@ package com.dxc.accountservice.configuration.security;
 
 
 import com.dxc.accountservice.jwt.JwtTokenFilter;
+import com.dxc.accountservice.persistence.entity.RoleEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -70,19 +72,20 @@ public class ApplicationSecurity {
                 .authorizeHttpRequests((requests) -> requests
                                 .antMatchers("/auth/login",
                                         "/docs/**",
-                                        "/users",
                                         "/h2-ui/**",
                                         "/configuration/ui",
                                         "/swagger-resources/**",
                                         "/configuration/security",
-                                        "/swagger-ui.html",
+                                        "/swagger-ui/**",
+                                        "/configuration/ui/auth-user",
+                                        "/v2/api-docs/**",
+                                        "/v3/api-docs/**",
                                         "/webjars/**"
-                                ).permitAll() // HABILITAR ESPACIOS LIBRES
-//                        .antMatchers("/**").permitAll() // BARRA LIBRE
-//                        .antMatchers("/products/**").hasAuthority(ERole.USER.name())
-//                                .antMatchers(HttpMethod.GET, "/products/**").hasAnyAuthority(ERole.USER.name(), ERole.ADMIN.name())//Para acceder a productos debe ser USER
-//                                .antMatchers("/products/**").hasAnyAuthority(ERole.ADMIN.name()) //admin puede hacer de todo
-                                .antMatchers("/products/**").permitAll()
+                                ).permitAll()
+                        .antMatchers(HttpMethod.POST,"/account/**").hasAuthority(RoleEnum.Director.name())
+                                .antMatchers(HttpMethod.PUT,"/account/**").hasAuthority(RoleEnum.Director.name())
+                                .antMatchers(HttpMethod.DELETE,"/account/**").hasAuthority(RoleEnum.Director.name())
+                                .antMatchers(HttpMethod.GET, "/products/**").hasAnyAuthority(RoleEnum.Cashier.name(), RoleEnum.Director.name())
                                 .anyRequest().authenticated()
                 );
 

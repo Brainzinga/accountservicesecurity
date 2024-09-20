@@ -28,6 +28,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
+import static com.dxc.accountservice.util.JsonUtil.asJsonString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.time.LocalDate;
@@ -47,7 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(AccountController.class)
-class AccountControllerTest_WebMvc {
+class AccountControllerTest_WebMvc extends AccountControllerTestAbstract {
 
     @Autowired
     private MockMvc mockMvc;
@@ -61,7 +62,7 @@ class AccountControllerTest_WebMvc {
     private Customer customer;
 
     @BeforeEach
-    public void setUp() {
+    public void init() {
         accDto = AccountDtoResponse.builder()
                 .id(1L).balance(400).openingDate(LocalDate.now()).type("Personal").customerId(1L)
                 .build();
@@ -76,7 +77,8 @@ class AccountControllerTest_WebMvc {
     void givenCostumerId_whenGetAccountByCustomer_thenAccountList() throws Exception {
 
         MvcResult result = mockMvc.perform(get("/account/customer/1")
-                    .accept(MediaType.APPLICATION_JSON_VALUE))
+                    .accept(MediaType.APPLICATION_JSON_VALUE)
+                    .header("Authorization", "Bearer " + accessToken))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk())
             .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
