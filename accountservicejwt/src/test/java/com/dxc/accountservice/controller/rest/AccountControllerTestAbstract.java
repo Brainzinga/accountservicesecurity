@@ -31,13 +31,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public abstract class AccountControllerTestAbstract {
     @Autowired
-    private MockMvc mvc;
+    protected MockMvc mockMvc;
 
     @Autowired
     private AccountService accountService;
 
-    private String username = "user";
-    private String password = "password";
+    protected String username = "admin";
+    protected String password = "password";
     protected String accessToken = null;
 
     @BeforeAll
@@ -53,12 +53,10 @@ public abstract class AccountControllerTestAbstract {
 
     @BeforeEach
     public void setUp() throws Exception {
-
-
         // Get Token
         AuthRequest authRequest = new AuthRequest(username, password);
 
-        MvcResult result = mvc.perform(post("/auth/login")
+        MvcResult result = mockMvc.perform(post("/auth/login")
                         .content(JsonUtil.asJsonString(authRequest))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)

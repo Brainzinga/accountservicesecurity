@@ -50,11 +50,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(AccountController.class)
-@AutoConfigureMockMvc
+//@AutoConfigureMockMvc
 class AccountControllerTest_WebMvc extends AccountControllerTestAbstract {
 
-    @Autowired
-    private MockMvc mockMvc;
+//    @Autowired
+//    private MockMvc mockMvc;
     @MockBean
     AccountService accountService;
     @MockBean

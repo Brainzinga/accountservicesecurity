@@ -42,3 +42,25 @@
 404 Customer/Account No encontrado
 400 Datos erróneos URL
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Utiles
+
+// create request body
+//JSONObject body = new JSONObject();
+//body.put("balance",400);
+//body.put("customerId", 1L);
+//body.put("openingDate", "2024-09-20");
+//body.put("type", "Personal");

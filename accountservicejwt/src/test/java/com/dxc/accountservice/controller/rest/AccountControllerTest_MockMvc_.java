@@ -40,7 +40,8 @@ class AccountControllerTest_MockMvc_ extends AccountControllerTestAbstract {
     @Test
     void givenCostumerId_whenGetAccountByCustomer_thenAccountList() throws Exception {
         MvcResult result = mockMvc.perform(get("/account/customer/1")
-                    .accept(MediaType.APPLICATION_JSON_VALUE))
+                    .accept(MediaType.APPLICATION_JSON_VALUE)
+                    .header("Authorization", "Bearer " + accessToken))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk())
             .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
@@ -62,7 +63,8 @@ class AccountControllerTest_MockMvc_ extends AccountControllerTestAbstract {
 
         MvcResult fakeaccount = mockMvc.perform(
                 get("/account/1/1")
-                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                    .accept(MediaType.APPLICATION_JSON_VALUE)
+                    .header("Authorization", "Bearer " + accessToken)
                 )
                     .andDo(MockMvcResultHandlers.print())
                     .andExpect(status().isOk())
@@ -78,6 +80,7 @@ class AccountControllerTest_MockMvc_ extends AccountControllerTestAbstract {
                     MvcResult fakeaccount = mockMvc.perform(
                         get("/account/2/9")
                         .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .header("Authorization", "Bearer " + accessToken)
                     )
                     .andDo(MockMvcResultHandlers.print())
                     .andExpect(status().isNotFound())
