@@ -9,6 +9,7 @@ import com.dxc.accountservice.util.JsonUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@AutoConfigureMockMvc
 public abstract class AccountControllerTestAbstract {
     @Autowired
     private MockMvc mvc;
@@ -72,6 +74,8 @@ public abstract class AccountControllerTestAbstract {
         System.out.println("JWT Tokem: " + response.toString());
 
         accessToken = response.getAccessToken();
+        System.out.println(accessToken);
     }
+
 
 }
