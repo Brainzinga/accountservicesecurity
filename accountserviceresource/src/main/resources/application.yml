@@ -1,10 +1,10 @@
-#  swagger URL = http://localhost:8080/swagger-ui/
 spring:
   application.name: accountserviceresource
   profiles.active: dev
 
 ---
 spring:
+  security.oauth2.resourceserver.jwt.issuer-uri: http://127.0.0.1:9000
   config.activate.on-profile: dev
   sql.init.mode: always
   datasource:
@@ -23,6 +23,7 @@ spring:
     console.enabled: true
     console.path: /h2-ui
   mvc.pathmatch.matching-strategy: ant-path-matcher
+
 
 server:
   port: 9900

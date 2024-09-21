@@ -77,40 +77,25 @@ public class AuthorizationServerConfig {
 
         RegisteredClient oidcClient1 = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("client1")
-                .clientSecret("{noop}myClientSecretValue")
+                .clientSecret("{noop}myClient")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/products-client-oidc")
+                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/account-client-oidc")
                 .redirectUri("https://oauthdebugger.com/debug")
                 .redirectUri("http://127.0.0.1:8080/authorized")
                 .tokenSettings(tokenSettings())
                 .scope(OidcScopes.OPENID)
-                .scope("SCOPE_products.read")
+                .scope("SCOPE_account.read")
                 .build();
-
-        RegisteredClient oidcClient2 = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId("client2")
-                .clientSecret("{noop}myClientSecretValue2")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("https://oauthdebugger.com/debug")
-                .redirectUri("http://127.0.0.1:8080/authorized")
-                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/products-client-oidc")
-                .scope(OidcScopes.OPENID)
-                .scope("SCOPE_products.write")
-                .tokenSettings(tokenSettings())
-                .build();
-
-        return new InMemoryRegisteredClientRepository(oidcClient1, oidcClient2);
+        return new InMemoryRegisteredClientRepository(oidcClient1);
     }
 
 
     @Bean
     public ProviderSettings providerSettings() {
         return ProviderSettings.builder()
-                .issuer("http://auth-server:9000")
+                .issuer("http://127.0.0.1:9000")
                 .build();
     }
 

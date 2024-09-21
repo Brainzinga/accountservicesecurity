@@ -4,6 +4,7 @@ import com.dxc.accountservice.domain.dto.AccountDtoRequest;
 import com.dxc.accountservice.domain.dto.AccountDtoResponse;
 import com.dxc.accountservice.domain.dto.AddAmountBalanceDto;
 import com.dxc.accountservice.domain.dto.RestMoneyBalanceDto;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface AccountService {
 
     String eliminarCuentasPorCliente(Long id);
 
+    List<AccountDtoResponse> getAllAccounts();
 }

@@ -13,6 +13,7 @@ import com.dxc.accountservice.persistence.mapper.AccountMapper;
 import com.dxc.accountservice.persistence.repository.AccountRepository;
 import com.dxc.accountservice.persistence.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -77,6 +78,11 @@ public class AccountServiceImpl implements AccountService  {
 //            return true;
 //        }
 //        return false;
+    }
+
+    @Override
+    public List<AccountDtoResponse> getAllAccounts() {
+        return accountMapper.toAccountDtoResponseList(accountRepository.findAll());
     }
 
     @Override

@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="oauth2-authorization-server" />
         <module name="ProductsService" />
+        <module name="oauth2-api-client" />
       </profile>
       <profile name="Annotation profile for accountserviceresource" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -35,6 +36,7 @@
       <module name="accountservice (1)" options="-parameters" />
       <module name="accountservice (2)" options="-parameters" />
       <module name="accountservice (3)" options="-parameters" />
+      <module name="oauth2-api-client" options="-parameters" />
       <module name="oauth2-authorization-server" options="-parameters" />
     </option>
   </component>

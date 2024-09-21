@@ -46,10 +46,6 @@ class AccountControllerTest_MockMvc_ extends AccountControllerTestAbstract {
             .andExpect(jsonPath("$[0].customerId").value(1))*/
             .andReturn();
     }
-    @Test
-    void givenCostumerId_whenGetAccountByCustomerNotExist_thenCustomerNotFoundException()
-    {
-    }
 
     @Test
     void givenAccountIdAndCostumerId_whenObtenerCuentaPorId_thenOneAccount() throws Exception{
@@ -80,22 +76,6 @@ class AccountControllerTest_MockMvc_ extends AccountControllerTestAbstract {
                     .andExpect(status().isNotFound())
                     .andExpect(content().string("this account does not exist for customer with id: 9"))
                     .andReturn();
-    }
-
-    @Test
-    void givenAccount_whenCrearCuenta_thenAccountCreated() {
-    }
-
-    @Test
-    void givenAccount_whenInvalidAccount_thenMethodArgumentNotValidException() {
-    }
-
-    @Test
-    void givenAccountAndBalance_whenRestMoneyToBalance_thenTrue() {
-    }
-
-    @Test
-    void givenAccountAndBalance_whenRestInsuficientMoneyToBalance_thenInsufficientBalanceException() {
     }
 
 }

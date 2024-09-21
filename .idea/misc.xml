@@ -8,7 +8,8 @@
         <option value="$PROJECT_DIR$/accountserviceresource/pom.xml" />
         <option value="$PROJECT_DIR$/oauth2-authorization-server/pom.xml" />
         <option value="$PROJECT_DIR$/../new/accountservice/pom.xml" />
-        <option value="$PROJECT_DIR$/../../Formacion/spring5/ProductsServiceJWT/pom.xml" />
+        <option value="$USER_HOME$/Formacion/spring5/ProductsServiceJWT/pom.xml" />
+        <option value="$PROJECT_DIR$/oauth2-api-client/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -1,6 +1,6 @@
 package com.dxc.accountservice.persistence.entity;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "accounts")
-@Schema(name = "Account", description = "Modelo de cuenta")
 public class Account {
 
     @Id

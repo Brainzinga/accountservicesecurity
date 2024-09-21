@@ -3,26 +3,25 @@ package com.dxc.accountservice.controller.rest;
 import com.dxc.accountservice.domain.dto.AccountDtoRequest;
 import com.dxc.accountservice.domain.dto.AccountDtoResponse;
 import com.dxc.accountservice.domain.service.AccountService;
-import com.dxc.accountservice.util.JsonUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeAll;
+
+
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
+
 import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.web.client.RestClientException;
 
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,13 +38,6 @@ class AccountControllerTestRestTemplate extends AccountControllerTestAbstract {
     @Autowired
     private AccountService accountService;
 
-    @Test
-    void givenCostumerId_whenGetAccountByCustomer_thenAccountList() {
-    }
-    @Test
-    void givenCostumerId_whenGetAccountByCustomerNotExist_thenCustomerNotFoundException()
-    {
-    }
 
     @Test
     void givenAccountIdAndCostumerId_whenObtenerCuentaPorId_thenOneAccount() throws Exception{
@@ -96,18 +88,6 @@ class AccountControllerTestRestTemplate extends AccountControllerTestAbstract {
         assertThat(response).isNotNull();
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isNotNull();
-    }
-
-    @Test
-    void givenAccount_whenInvalidAccount_thenMethodArgumentNotValidException() {
-    }
-
-    @Test
-    void givenAccountAndBalance_whenRestMoneyToBalance_thenTrue() {
-    }
-
-    @Test
-    void givenAccountAndBalance_whenRestInsuficientMoneyToBalance_thenInsufficientBalanceException() {
     }
 
 
